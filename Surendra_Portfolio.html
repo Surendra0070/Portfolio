@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gondela Surendra Reddy — QA Module Lead</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B0F14;
+    --surface: #131920;
+    --surface-2: #1A222B;
+    --line: #232C36;
+    --text: #E7EDF3;
+    --text-dim: #8B98A5;
+    --pass: #3FB950;
+    --pass-dim: #1F3A26;
+    --warn: #D29922;
+    --warn-dim: #3A2F14;
+    --accent: #5FA8FF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  /* ---- NAV ---- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,15,20,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .nav-id{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--pass);display:flex;align-items:center;gap:8px;}
+  .nav-id .dot{width:7px;height:7px;border-radius:50%;background:var(--pass);box-shadow:0 0 8px var(--pass);}
+  .nav-links{display:flex;gap:28px;font-size:14px;color:var(--text-dim);}
+  .nav-links a:hover{color:var(--text);}
+  @media(max-width:640px){.nav-links{display:none;}}
+
+  /* ---- HERO ---- */
+  .hero{padding:96px 0 80px;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:48px;}}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.08em;
+    color:var(--pass);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:'';width:22px;height:1px;background:var(--pass);}
+  .hero h1{font-size:52px;font-weight:600;line-height:1.08;letter-spacing:-0.02em;margin-bottom:16px;}
+  @media(max-width:640px){.hero h1{font-size:36px;}}
+  .hero .role{font-size:19px;color:var(--text-dim);margin-bottom:22px;}
+  .hero .role strong{color:var(--text);font-weight:500;}
+  .hero p.desc{color:var(--text-dim);font-size:15.5px;max-width:46ch;margin-bottom:32px;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    padding:12px 22px;border-radius:8px;font-size:14px;font-weight:500;
+    display:inline-flex;align-items:center;gap:8px;transition:all .15s ease;
+  }
+  .btn-primary{background:var(--pass);color:#0B0F14;}
+  .btn-primary:hover{background:#4ecb62;transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--line);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--text-dim);background:var(--surface);}
+
+  /* ---- TERMINAL CARD ---- */
+  .term{
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    overflow:hidden;box-shadow:0 20px 60px -20px rgba(0,0,0,0.6);
+  }
+  .term-bar{
+    display:flex;align-items:center;gap:8px;padding:12px 16px;
+    border-bottom:1px solid var(--line);background:var(--surface-2);
+  }
+  .term-bar span{width:10px;height:10px;border-radius:50%;}
+  .term-bar span:nth-child(1){background:#FF5F57;}
+  .term-bar span:nth-child(2){background:#FEBC2E;}
+  .term-bar span:nth-child(3){background:#28C840;}
+  .term-title{margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-dim);}
+  .term-body{padding:20px 20px 24px;font-family:'JetBrains Mono',monospace;font-size:13px;}
+  .term-line{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed var(--line);}
+  .term-line:last-child{border-bottom:none;}
+  .term-line .k{color:var(--text-dim);}
+  .term-line .v{color:var(--pass);display:flex;align-items:center;gap:6px;}
+  .term-line .v::before{content:'✓';font-size:11px;}
+  .term-summary{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);color:var(--text-dim);}
+  .cursor{display:inline-block;width:7px;height:14px;background:var(--pass);margin-left:2px;animation:blink 1.1s steps(1) infinite;vertical-align:middle;}
+  @keyframes blink{50%{opacity:0;}}
+
+  /* ---- SECTION HEADERS ---- */
+  section{padding:72px 0;border-top:1px solid var(--line);}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:36px;}
+  .sec-num{font-family:'JetBrains Mono',monospace;color:var(--pass);font-size:13px;}
+  .sec-head h2{font-size:28px;font-weight:600;letter-spacing:-0.01em;}
+  .sec-sub{color:var(--text-dim);font-size:15px;max-width:60ch;margin-bottom:36px;margin-top:-24px;}
+
+  /* ---- ABOUT ---- */
+  .about-text{font-size:17px;color:#C9D3DC;max-width:72ch;}
+  .about-text strong{color:var(--text);font-weight:600;}
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-top:40px;border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  @media(max-width:640px){.stat-row{grid-template-columns:repeat(2,1fr);}}
+  .stat{background:var(--surface);padding:22px 20px;}
+  .stat .num{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:600;color:var(--pass);}
+  .stat .label{font-size:12.5px;color:var(--text-dim);margin-top:4px;}
+
+  /* ---- EXPERIENCE ---- */
+  .job-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:32px;}
+  .job-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:8px;}
+  .job-head h3{font-size:21px;font-weight:600;}
+  .job-head .company{color:var(--pass);font-weight:500;}
+  .job-date{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--text-dim);border:1px solid var(--line);padding:4px 10px;border-radius:100px;white-space:nowrap;}
+  .job-loc{color:var(--text-dim);font-size:14px;margin-bottom:22px;}
+  .checklist{list-style:none;}
+  .checklist li{
+    display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--line);
+    font-size:14.5px;color:#C9D3DC;
+  }
+  .checklist li:first-child{border-top:none;}
+  .checklist li::before{
+    content:'✓';flex-shrink:0;width:20px;height:20px;border-radius:5px;
+    background:var(--pass-dim);color:var(--pass);font-size:12px;
+    display:flex;align-items:center;justify-content:center;margin-top:1px;
+  }
+
+  /* ---- PROJECTS ---- */
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:900px){.proj-grid{grid-template-columns:1fr;}}
+  .proj-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:24px;display:flex;flex-direction:column;gap:14px;transition:border-color .15s ease, transform .15s ease;
+  }
+  .proj-card:hover{border-color:#2E3A46;transform:translateY(-2px);}
+  .proj-status{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;
+    color:var(--pass);background:var(--pass-dim);padding:4px 9px;border-radius:5px;
+    width:fit-content;text-transform:uppercase;
+  }
+  .proj-card h3{font-size:16.5px;font-weight:600;line-height:1.35;}
+  .proj-tools{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text-dim);}
+  .proj-card p{font-size:13.8px;color:var(--text-dim);flex-grow:1;}
+
+  /* ---- SKILLS ---- */
+  .skill-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 40px;}
+  @media(max-width:700px){.skill-groups{grid-template-columns:1fr;}}
+  .skill-group h4{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-dim);
+    text-transform:uppercase;letter-spacing:0.06em;margin-bottom:14px;
+  }
+  .tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{
+    font-size:13px;padding:7px 13px;border-radius:7px;background:var(--surface);
+    border:1px solid var(--line);color:#C9D3DC;
+  }
+
+  /* ---- LEADERSHIP ---- */
+  .lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media(max-width:700px){.lead-grid{grid-template-columns:1fr;}}
+  .lead-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:26px;}
+  .lead-card .icon{width:36px;height:36px;border-radius:8px;background:var(--pass-dim);color:var(--pass);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:600;margin-bottom:16px;}
+  .lead-card h4{font-size:16px;font-weight:600;margin-bottom:8px;}
+  .lead-card p{font-size:14px;color:var(--text-dim);}
+
+  /* ---- CONTACT / FOOTER ---- */
+  footer{padding:72px 0 48px;text-align:center;}
+  footer h2{font-size:32px;margin-bottom:14px;}
+  footer p{color:var(--text-dim);margin-bottom:32px;}
+  .contact-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:56px;}
+  .foot-note{font-family:'JetBrains Mono',monospace;font-size:12px;color:#4A5560;}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-id"><span class="dot"></span>surendra.qa</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">QA Module Lead · FreshToHome</div>
+      <h1>Gondela Surendra<br>Reddy</h1>
+      <p class="role">Owns quality end-to-end for <strong>order, payments, pricing, logistics &amp; CRM</strong> systems across a high-scale e-commerce platform.</p>
+      <p class="desc">Leads test strategy across 4+ interdependent microservices spanning India and UAE — from planning through production sign-off — while mentoring the next generation of QA engineers.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary">Get in touch</a>
+        <a href="#experience" class="btn btn-ghost">View experience</a>
+      </div>
+    </div>
+    <div class="term">
+      <div class="term-bar">
+        <span></span><span></span><span></span>
+        <span class="term-title">test-suite — surendra --summary</span>
+      </div>
+      <div class="term-body">
+        <div class="term-line"><span class="k">modules_owned</span><span class="v">5</span></div>
+        <div class="term-line"><span class="k">microservices_coordinated</span><span class="v">4+</span></div>
+        <div class="term-line"><span class="k">refund_edge_cases_caught</span><span class="v">15+</span></div>
+        <div class="term-line"><span class="k">rider_payout_orders_validated</span><span class="v">44+</span></div>
+        <div class="term-line"><span class="k">regions_covered</span><span class="v">4</span></div>
+        <div class="term-line"><span class="k">engineers_mentored</span><span class="v">3+</span></div>
+        <div class="term-summary">All modules passing. Ready for production.<span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">01</span><h2>About</h2></div>
+    <p class="about-text reveal">
+      Surendra leads quality across FreshToHome's core e-commerce systems — <strong>order management, payments &amp; refunds, pricing &amp; catalog, delivery logistics, and CRM/campaigns</strong>. Rather than testing modules in isolation, he coordinates QA across the microservices they depend on, so a fix in one system doesn't quietly break another. He's comfortable going deep into PHP/Laravel, SQL, and REST APIs to isolate root causes, and just as comfortable building the review processes and documentation that let a growing QA team move faster without cutting corners.
+    </p>
+    <div class="stat-row reveal">
+      <div class="stat"><div class="num">50+</div><div class="label">Critical bugs caught pre-release</div></div>
+      <div class="stat"><div class="num">2</div><div class="label">Regions (India &amp; UAE)</div></div>
+      <div class="stat"><div class="num">8</div><div class="label">Hub codes validated</div></div>
+      <div class="stat"><div class="num">3+</div><div class="label">QA engineers mentored</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">02</span><h2>Experience</h2></div>
+    <div class="job-card reveal">
+      <div class="job-head">
+        <div>
+          <h3>QA Module Lead <span class="mono" style="color:var(--text-dim);font-size:14px;">@</span> <span class="company">FreshToHome</span></h3>
+        </div>
+        <div class="job-date">MONTH YEAR — PRESENT</div>
+      </div>
+      <div class="job-loc">Bengaluru, India</div>
+      <ul class="checklist">
+        <li>Own end-to-end QA for order management, payments/refunds, pricing, logistics, and CRM modules, coordinating test strategy across 4+ interdependent microservices for both India and UAE operations.</li>
+        <li>Redesigned the credit-memo and refund testing framework across COD, Razorpay, Juspay, and UPI, cutting refund-related production escalations by surfacing 15+ edge-case failures before rollout.</li>
+        <li>Lead QA sign-off for the B2B pricing and catalog platform, safeguarding pricing accuracy for partner channels including MRPL, Dunzo, and BlinkIt through 5+ release cycles.</li>
+        <li>Built and scaled the test framework for the Rider Payout system, validating payout accuracy across 44+ orders, 8 hub codes, and 4 regions ahead of a company-wide rollout.</li>
+        <li>Manage and mentor a team of 3+ QA engineers, running structured test-case reviews, KT sessions, and defect-pattern audits that measurably improved team-wide defect-detection rates.</li>
+        <li>Serve as the QA point of contact for production incidents, partnering with backend, mobile, and DevOps to triage issues in real time and validate hotfixes before deployment.</li>
+        <li>Own release-readiness for the NinjaCat/Redpanda CRM and campaign platform, catching integration-breaking regressions before they reached production customers.</li>
+        <li>Established the team's QA operating rhythm — retrospectives, sprint demos, and onboarding documentation — to standardize quality practices across modules.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">03</span><h2>Key Projects</h2></div>
+    <p class="sec-sub reveal">Selected initiatives led end-to-end, from test design through production sign-off.</p>
+    <div class="proj-grid">
+      <div class="proj-card reveal">
+        <div class="proj-status">Resolved</div>
+        <h3>Bad Geolocation Flagging &amp; SLA Buffer Control</h3>
+        <div class="proj-tools">Polygon Mapping · pETA</div>
+        <p>Led QA for address-serviceability logic across polygon matching, pincode fallback, and SLA buffer zones — catching a critical loop bug that trapped customers in infinite confirmation cycles.</p>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-status">Resolved</div>
+        <h3>Skip Slot Capacity Check</h3>
+        <div class="proj-tools">Beluga Scripting · Magento</div>
+        <p>Drove QA for hub-transfer and stock-transfer orders, unblocking bulk fulfillment during peak capacity by eliminating slot-blocking defects.</p>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-status">Resolved</div>
+        <h3>eKYC Quick Rider Onboarding</h3>
+        <div class="proj-tools">Postman · REST APIs</div>
+        <p>Built the QA framework for a third-party eKYC integration, authoring Postman test collections that caught non-functional APIs ahead of client readiness.</p>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-status">Resolved</div>
+        <h3>Purple Cashback Expiry &amp; Loyalty Engine</h3>
+        <div class="proj-tools">Cron Jobs · SMS Logic</div>
+        <p>Validated batch reminder logic and per-kg cashback rounding for the loyalty program, catching a critical batch-size bug sending SMS to all users instead of the configured limit.</p>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-status">Resolved</div>
+        <h3>NinjaCat v2 Campaign Platform Revamp</h3>
+        <div class="proj-tools">SMS · WhatsApp · RCS</div>
+        <p>Led QA across campaign creation channels, uncovering critical bugs including circular JSON errors, campaign duplication, and scheduled sends getting stuck.</p>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-status">Resolved</div>
+        <h3>Hub Cost Analysis — Phase 2</h3>
+        <div class="proj-tools">Operational Analytics</div>
+        <p>Validated Store Stress Measure metrics — DE availability, order backlog, SLA breach rate — verifying historical data collection accuracy for operational analytics.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">04</span><h2>Skills</h2></div>
+    <div class="skill-groups">
+      <div class="skill-group reveal">
+        <h4>Testing</h4>
+        <div class="tags">
+          <span class="tag">Functional Testing</span>
+          <span class="tag">Regression Testing</span>
+          <span class="tag">API Testing</span>
+          <span class="tag">End-to-End Testing</span>
+          <span class="tag">Test Case Design</span>
+          <span class="tag">Defect Triage</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Tools</h4>
+        <div class="tags">
+          <span class="tag">Jira</span>
+          <span class="tag">Postman</span>
+          <span class="tag">Beluga Scripting</span>
+          <span class="tag">Slack</span>
+          <span class="tag">Git / Bitbucket</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Platforms</h4>
+        <div class="tags">
+          <span class="tag">Magento</span>
+          <span class="tag">Sailfish</span>
+          <span class="tag">PHP / Laravel</span>
+          <span class="tag">MySQL</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Domains</h4>
+        <div class="tags">
+          <span class="tag">Order Management</span>
+          <span class="tag">Payments &amp; Refunds</span>
+          <span class="tag">Logistics</span>
+          <span class="tag">Pricing Engines</span>
+          <span class="tag">CRM / Campaigns</span>
+          <span class="tag">Geolocation Services</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="leadership">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">05</span><h2>Leadership</h2></div>
+    <div class="lead-grid">
+      <div class="lead-card reveal">
+        <div class="icon">3+</div>
+        <h4>Team Mentorship</h4>
+        <p>Directly mentors 3+ junior QA engineers through structured test-case reviews and KT sessions on payments, delivery, and campaign systems — measurably improving team-wide defect-detection rates.</p>
+      </div>
+      <div class="lead-card reveal">
+        <div class="icon">QA</div>
+        <h4>Process &amp; Enablement</h4>
+        <p>Built flowcharts for complex geolocation flows and authored onboarding documentation, cutting ramp-up time for new QA hires and standardizing quality practices across modules.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">06</span><h2>Education</h2></div>
+    <div class="job-card reveal">
+      <div class="job-head">
+        <div>
+          <h3>Bachelor of Technology <span class="mono" style="color:var(--text-dim);font-size:14px;">@</span> <span class="company">Gokul Institute of Technology and Sciences</span></h3>
+        </div>
+        <div class="job-date">2005 — 2009</div>
+      </div>
+      <div class="job-loc">India</div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2 class="display">Let's talk quality.</h2>
+    <p>Open to QA leadership roles in product-based e-commerce and platform teams.</p>
+    <div class="contact-row">
+      <a href="mailto:surendrareddy.g@outlook.com" class="btn btn-primary">surendrareddy.g@outlook.com</a>
+      <a href="tel:+917799415533" class="btn btn-ghost">+91-7799415533</a>
+      <a href="https://www.linkedin.com/in/surendra-reddy-38744a243/" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://github.com/Surendra0070" class="btn btn-ghost">GitHub</a>
+    </div>
+    <div class="foot-note">Bengaluru, India — build passing.</div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
