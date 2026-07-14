@@ -52,8 +52,7 @@
 
   /* ---- HERO ---- */
   .hero{padding:96px 0 80px;}
-  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;}
-  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:48px;}}
+  .hero-grid{max-width:640px;}
   .eyebrow{
     font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.08em;
     color:var(--pass);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px;
@@ -73,34 +72,6 @@
   .btn-primary:hover{background:#4ecb62;transform:translateY(-1px);}
   .btn-ghost{border:1px solid var(--line);color:var(--text);}
   .btn-ghost:hover{border-color:var(--text-dim);background:var(--surface);}
-
-  /* ---- TERMINAL CARD ---- */
-  .term{
-    background:var(--surface);border:1px solid var(--line);border-radius:12px;
-    overflow:hidden;box-shadow:0 20px 60px -20px rgba(0,0,0,0.6);
-  }
-  .term-bar{
-    display:flex;align-items:center;gap:8px;padding:14px 16px;
-    border-bottom:1px solid var(--line);background:var(--surface-2);
-    flex-wrap:nowrap;
-  }
-  .term-bar span{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-  .term-bar span:nth-child(1){background:#FF5F57;}
-  .term-bar span:nth-child(2){background:#FEBC2E;}
-  .term-bar span:nth-child(3){background:#28C840;}
-  .term-title{
-    margin-left:12px;font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:#FFFFFF;
-    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1;letter-spacing:0.02em;
-  }
-  .term-body{padding:20px 20px 24px;font-family:'JetBrains Mono',monospace;font-size:13px;}
-  .term-line{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed var(--line);}
-  .term-line:last-child{border-bottom:none;}
-  .term-line .k{color:var(--text-dim);}
-  .term-line .v{color:var(--pass);display:flex;align-items:center;gap:6px;}
-  .term-line .v::before{content:'✓';font-size:11px;}
-  .term-summary{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);color:var(--text-dim);}
-  .cursor{display:inline-block;width:7px;height:14px;background:var(--pass);margin-left:2px;animation:blink 1.1s steps(1) infinite;vertical-align:middle;}
-  @keyframes blink{50%{opacity:0;}}
 
   /* ---- SECTION HEADERS ---- */
   section{padding:72px 0;border-top:1px solid var(--line);}
@@ -153,6 +124,12 @@
   .proj-card h3{font-size:16.5px;font-weight:600;line-height:1.35;}
   .proj-tools{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text-dim);}
   .proj-card p{font-size:13.8px;color:var(--text-dim);flex-grow:1;}
+  .proj-featured{grid-column:1 / -1;border-color:var(--pass);}
+  .proj-links{display:flex;gap:10px;flex-wrap:wrap;}
+  .proj-links span{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-dim);
+    border:1px solid var(--line);background:var(--surface-2);padding:5px 10px;border-radius:6px;
+  }
 
   /* ---- SKILLS ---- */
   .skill-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 40px;}
@@ -168,8 +145,8 @@
   }
 
   /* ---- LEADERSHIP ---- */
-  .lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-  @media(max-width:700px){.lead-grid{grid-template-columns:1fr;}}
+  .lead-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:900px){.lead-grid{grid-template-columns:1fr;}}
   .lead-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:26px;}
   .lead-card .icon{width:36px;height:36px;border-radius:8px;background:var(--pass-dim);color:var(--pass);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:600;margin-bottom:16px;}
   .lead-card h4{font-size:16px;font-weight:600;margin-bottom:8px;}
@@ -207,31 +184,14 @@
 </nav>
 
 <header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow">QA Module Lead · FreshToHome</div>
-      <h1>Gondela Surendra<br>Reddy</h1>
-      <p class="role">Owns quality end-to-end for <strong>order, payments, pricing, logistics &amp; CRM</strong> systems across a high-scale e-commerce platform.</p>
-      <p class="desc">Leads test strategy across 4+ interdependent microservices spanning India and UAE — from planning through production sign-off — while mentoring the next generation of QA engineers.</p>
-      <div class="cta-row">
-        <a href="#contact" class="btn btn-primary">Get in touch</a>
-        <a href="#experience" class="btn btn-ghost">View experience</a>
-      </div>
-    </div>
-    <div class="term">
-      <div class="term-bar">
-        <span></span><span></span><span></span>
-        <span class="term-title">surendra --qa-summary</span>
-      </div>
-      <div class="term-body">
-        <div class="term-line"><span class="k">modules_owned</span><span class="v">5</span></div>
-        <div class="term-line"><span class="k">microservices_coordinated</span><span class="v">4+</span></div>
-        <div class="term-line"><span class="k">refund_edge_cases_caught</span><span class="v">15+</span></div>
-        <div class="term-line"><span class="k">rider_payout_orders_validated</span><span class="v">44+</span></div>
-        <div class="term-line"><span class="k">regions_covered</span><span class="v">4</span></div>
-        <div class="term-line"><span class="k">engineers_mentored</span><span class="v">3+</span></div>
-        <div class="term-summary">All modules passing. Ready for production.<span class="cursor"></span></div>
-      </div>
+  <div class="wrap">
+    <div class="eyebrow">QA Module Lead · FreshToHome</div>
+    <h1>Gondela Surendra<br>Reddy</h1>
+    <p class="role">Owns quality end-to-end for <strong>order, payments, pricing, logistics &amp; CRM</strong> systems across a high-scale e-commerce platform.</p>
+    <p class="desc">Leads test strategy across 4+ interdependent microservices spanning India and UAE — from planning through production sign-off — while mentoring the next generation of QA engineers.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn btn-primary">Get in touch</a>
+      <a href="#experience" class="btn btn-ghost">View experience</a>
     </div>
   </div>
 </header>
@@ -240,7 +200,7 @@
   <div class="wrap">
     <div class="sec-head reveal"><span class="sec-num">01</span><h2>About</h2></div>
     <p class="about-text reveal">
-      Surendra leads quality across FreshToHome's core e-commerce systems — <strong>order management, payments &amp; refunds, pricing &amp; catalog, delivery logistics, and CRM/campaigns</strong>. Rather than testing modules in isolation, he coordinates QA across the microservices they depend on, so a fix in one system doesn't quietly break another. He's comfortable going deep into PHP/Laravel, SQL, and REST APIs to isolate root causes, and just as comfortable building the review processes and documentation that let a growing QA team move faster without cutting corners.
+      Surendra leads quality across FreshToHome's core e-commerce systems — <strong>order management, payments &amp; refunds, pricing &amp; catalog, delivery logistics, and CRM/campaigns</strong>. Rather than testing modules in isolation, he coordinates QA across the microservices they depend on, so a fix in one system doesn't quietly break another. His path here started in payment gateway and pharmacy platform testing, giving him a foundation in functional, regression, and acceptance testing that now shows up in how he structures QA at scale. He's comfortable going deep into PHP/Laravel, SQL, and REST APIs to isolate root causes, and just as comfortable building the review processes and documentation that let a growing QA team move faster without cutting corners.
     </p>
     <div class="stat-row reveal">
       <div class="stat"><div class="num">50+</div><div class="label">Critical bugs caught pre-release</div></div>
@@ -273,6 +233,50 @@
         <li>Established the team's QA operating rhythm — retrospectives, sprint demos, and onboarding documentation — to standardize quality practices across modules.</li>
       </ul>
     </div>
+
+    <div class="job-card reveal" style="margin-top:20px;">
+      <div class="job-head">
+        <div>
+          <h3>QA Engineer <span class="mono" style="color:var(--text-dim);font-size:14px;">@</span> <span class="company">DBAUX Technologies</span></h3>
+        </div>
+        <div class="job-date">SEPT 2019 — JUNE 2020</div>
+      </div>
+      <div class="job-loc">Bengaluru, India · Client: FreshToHome, FTH Daily</div>
+      <ul class="checklist">
+        <li>Created functional testing plans and executed end-to-end test cycles for FreshToHome and FTH Daily, documenting regression and acceptance testing procedures.</li>
+        <li>Designed and executed test cases for the Ngenius and Razorpay payment gateways, along with refund functionality across order flows.</li>
+        <li>Authored feature-testing documentation and delivered test cases to developers ahead of feature builds, logging defects in the bug-tracking system.</li>
+        <li>Estimated workload requirements and built standard test strategy plans for upcoming sprints.</li>
+      </ul>
+    </div>
+
+    <div class="job-card reveal" style="margin-top:20px;">
+      <div class="job-head">
+        <div>
+          <h3>QA Engineer <span class="mono" style="color:var(--text-dim);font-size:14px;">@</span> <span class="company">ICRO Technologies</span></h3>
+        </div>
+        <div class="job-date">APRIL 2014 — JUNE 2017</div>
+      </div>
+      <div class="job-loc">India · Pharmacy Management Platform</div>
+      <ul class="checklist">
+        <li>Developed functional testing plans and executed end-to-end testing for a pharmacy management platform, covering regression and acceptance testing.</li>
+        <li>Refined test plans and built QA test strategies, tracking defects through the software release cycle and preparing test data for the SDLC.</li>
+        <li>Delivered weekly test-plan status updates to the test manager and monitored the defect-tracking system for emerging issues.</li>
+      </ul>
+    </div>
+
+    <div class="job-card reveal" style="margin-top:20px;">
+      <div class="job-head">
+        <div>
+          <h3>Customer Care Executive <span class="mono" style="color:var(--text-dim);font-size:14px;">@</span> <span class="company">Hinduja Global Solutions</span></h3>
+        </div>
+        <div class="job-date">APRIL 2010 — APRIL 2011</div>
+      </div>
+      <div class="job-loc">India</div>
+      <ul class="checklist">
+        <li>Handled inbound customer calls, resolving queries and complaints with a strong track record of customer satisfaction.</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -281,6 +285,28 @@
     <div class="sec-head reveal"><span class="sec-num">03</span><h2>Key Projects</h2></div>
     <p class="sec-sub reveal">Selected initiatives led end-to-end, from test design through production sign-off.</p>
     <div class="proj-grid">
+      <div class="proj-card reveal proj-featured">
+        <div class="proj-status">Resolved</div>
+        <h3>Combo Product Feature Rollout</h3>
+        <div class="proj-tools">Magento · Multi-Hub Logistics · iOS/Android · Web</div>
+        <p>Led end-to-end QA for the Combo Product rollout across India and UAE — 90%+ coverage across standard, express, VIP, and multi-hub delivery flows, with 20+ test scenarios spanning prepaid/postpaid orders, partial cancellations, refunds, invoicing, and tax calculations. Traced a critical production defect (combo line items silently dropped post-order) to a parent/child product misconfiguration, resolved an OOS-handling bug blocking checkout, and coordinated with backend and DevOps to fix intermittent stock outages across Chennai and UAE. Validated production deployments (PR #110, PR #185) before go-live sign-off.</p>
+        <div class="proj-links">
+          <span>Ref: FTH-3074</span>
+          <span>Ref: FTH-19150</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal proj-featured">
+        <div class="proj-status">Resolved</div>
+        <h3>Multi-Gateway Payment QA &amp; Integration Testing</h3>
+        <div class="proj-tools">Juspay · Razorpay · Ngenius · Easebuzz · CRED · SODEXO</div>
+        <p>Validated end-to-end payment flows across 6+ gateways spanning India and UAE, including the gateway migration from Ngenius to Juspay (UAE) and direct Razorpay to Juspay-orchestrated flows (India). Diagnosed critical payment authorization failures via Juspay sandbox logs and webhook analysis, and traced an intermittent post-OTP payment failure across Android 14/15/16 and iOS 18.7.2 to a production fix validated across all 4 OS versions. Led QA for Razorpay QR code payments end-to-end — generation, webhook-simulated UPI capture, and expiry handling — catching 3 critical UX issues in the expiry flow. Performed deep database-level verification across payment_refund, upi_payment, orders, and special_payment tables, and oversaw 27+ scenario regression testing for Razorpay and Easebuzz SDK upgrades.</p>
+        <div class="proj-links">
+          <span>6+ Gateways</span>
+          <span>4 Platforms</span>
+          <span>27+ Regression Scenarios</span>
+        </div>
+      </div>
       <div class="proj-card reveal">
         <div class="proj-status">Resolved</div>
         <h3>Bad Geolocation Flagging &amp; SLA Buffer Control</h3>
@@ -334,6 +360,7 @@
           <span class="tag">End-to-End Testing</span>
           <span class="tag">Test Case Design</span>
           <span class="tag">Defect Triage</span>
+          <span class="tag">Webhook Testing</span>
         </div>
       </div>
       <div class="skill-group reveal">
@@ -344,6 +371,19 @@
           <span class="tag">Beluga Scripting</span>
           <span class="tag">Slack</span>
           <span class="tag">Git / Bitbucket</span>
+          <span class="tag">Mailtrap</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Payment Gateways</h4>
+        <div class="tags">
+          <span class="tag">Juspay</span>
+          <span class="tag">Razorpay</span>
+          <span class="tag">Ngenius</span>
+          <span class="tag">Easebuzz</span>
+          <span class="tag">CRED</span>
+          <span class="tag">SODEXO</span>
+          <span class="tag">Checkout.com</span>
         </div>
       </div>
       <div class="skill-group reveal">
@@ -384,6 +424,11 @@
         <h4>Process &amp; Enablement</h4>
         <p>Built flowcharts for complex geolocation flows and authored onboarding documentation, cutting ramp-up time for new QA hires and standardizing quality practices across modules.</p>
       </div>
+      <div class="lead-card reveal">
+        <div class="icon">v2</div>
+        <h4>QA Template Redesign</h4>
+        <p>Designed and introduced a consolidated test-case and defect-tracking template — replacing 5 disconnected phase-specific sheets with one master sheet, standardized dropdowns, and a live pass-rate/defect dashboard — improving test visibility across the QA team.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -398,7 +443,7 @@
         </div>
         <div class="job-date">2005 — 2009</div>
       </div>
-      <div class="job-loc">India</div>
+      <div class="job-loc">Vizag</div>
     </div>
   </div>
 </section>
