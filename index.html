@@ -80,7 +80,7 @@
     overflow:hidden;box-shadow:0 20px 60px -20px rgba(0,0,0,0.6);
   }
   .term-bar{
-    display:flex;align-items:center;gap:8px;padding:12px 16px;
+    display:flex;align-items:center;gap:8px;padding:14px 16px;
     border-bottom:1px solid var(--line);background:var(--surface-2);
     flex-wrap:nowrap;
   }
@@ -89,8 +89,8 @@
   .term-bar span:nth-child(2){background:#FEBC2E;}
   .term-bar span:nth-child(3){background:#28C840;}
   .term-title{
-    margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-dim);
-    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1;
+    margin-left:12px;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:500;color:var(--text);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1;letter-spacing:0.01em;
   }
   .term-body{padding:20px 20px 24px;font-family:'JetBrains Mono',monospace;font-size:13px;}
   .term-line{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed var(--line);}
@@ -220,12 +220,8 @@
     </div>
     <div class="term">
       <div class="term-bar">
-       <div class="dots">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-<span class="term-title">surendra_qa_summary</span>
+        <span></span><span></span><span></span>
+        <span class="term-title">surendra --qa-summary</span>
       </div>
       <div class="term-body">
         <div class="term-line"><span class="k">modules_owned</span><span class="v">5</span></div>
@@ -263,7 +259,7 @@
         <div>
           <h3>QA Module Lead <span class="mono" style="color:var(--text-dim);font-size:14px;">@</span> <span class="company">FreshToHome</span></h3>
         </div>
-        <div class="job-date">July 2020 — PRESENT</div>
+        <div class="job-date">MONTH YEAR — PRESENT</div>
       </div>
       <div class="job-loc">Bengaluru, India</div>
       <ul class="checklist">
