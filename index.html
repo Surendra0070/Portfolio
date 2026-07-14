@@ -200,7 +200,7 @@
   <div class="wrap">
     <div class="sec-head reveal"><span class="sec-num">01</span><h2>About</h2></div>
     <p class="about-text reveal">
-      Surendra leads quality across FreshToHome's core e-commerce systems — <strong>order management, payments &amp; refunds, pricing &amp; catalog, delivery logistics, and CRM/campaigns</strong>. Rather than testing modules in isolation, he coordinates QA across the microservices they depend on, so a fix in one system doesn't quietly break another. His path here started in payment gateway and pharmacy platform testing, giving him a foundation in functional, regression, and acceptance testing that now shows up in how he structures QA at scale. He's comfortable going deep into PHP/Laravel, SQL, and REST APIs to isolate root causes, and just as comfortable building the review processes and documentation that let a growing QA team move faster without cutting corners.
+      Surendra leads quality across FreshToHome's core e-commerce systems — <strong>order management, payments &amp; refunds, pricing &amp; catalog, delivery logistics, and CRM/campaigns</strong>. Rather than testing modules in isolation, he coordinates QA across the microservices they depend on, so a fix in one system doesn't quietly break another. His path here started in payment gateway and pharmacy platform testing, giving him a foundation in functional, regression, and acceptance testing that now shows up in how he structures QA at scale. He's comfortable going deep into SQL, REST APIs, and mobile app internals (Cordova, React Native) to isolate root causes, and just as comfortable building the review processes and documentation that let a growing QA team move faster without cutting corners.
     </p>
     <div class="stat-row reveal">
       <div class="stat"><div class="num">50+</div><div class="label">Critical bugs caught pre-release</div></div>
@@ -290,9 +290,6 @@
         <h3>Combo Product Feature Rollout</h3>
         <div class="proj-tools">Magento · Multi-Hub Logistics · iOS/Android · Web</div>
         <p>Led end-to-end QA for the Combo Product rollout across India and UAE — 90%+ coverage across standard, express, VIP, and multi-hub delivery flows, with 20+ test scenarios spanning prepaid/postpaid orders, partial cancellations, refunds, invoicing, and tax calculations. Traced a critical production defect (combo line items silently dropped post-order) to a parent/child product misconfiguration, resolved an OOS-handling bug blocking checkout, and coordinated with backend and DevOps to fix intermittent stock outages across Chennai and UAE. Validated production deployments (PR #110, PR #185) before go-live sign-off.</p>
-        <div class="proj-links">
-          <span>Ref: FTH-3074</span>
-          <span>Ref: FTH-19150</span>
         </div>
       </div>
 
@@ -307,6 +304,29 @@
           <span>27+ Regression Scenarios</span>
         </div>
       </div>
+
+      <div class="proj-card reveal proj-featured">
+        <div class="proj-status">Resolved</div>
+        <h3>Cordova-to-React Native Migration QA</h3>
+        <div class="proj-tools">Cordova · React Native · Regression Testing</div>
+        <p>Served as QA lead through the Cordova-to-React Native app migration, validating feature parity across 17+ pending features including payment gateways, push notifications, and stories. Built a regression comparison matrix between Cordova and RN builds that surfaced platform-specific behavioral differences — including a duplicate address bug that was fixed in Cordova but reproduced in RN. Maintained parallel Cordova release testing (Android v4.14.1, v4.14.3, iOS) throughout the phased migration, coordinating with DevOps to validate Cordova and RN branches simultaneously without regressing either platform.</p>
+        <div class="proj-links">
+          <span>17+ Features Validated</span>
+          <span>Dual-Platform Testing</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal proj-featured">
+        <div class="proj-status">Resolved</div>
+        <h3>Deep Link &amp; Push Notification QA</h3>
+        <div class="proj-tools">MoEngage · Deep Linking · Cordova/RN</div>
+        <p>Validated 10+ deep-link URI patterns across the customer and delivery apps, and root-caused a critical production push-notification outage to a URL construction bug in the Magento-to-RedPanda-to-MoEngage pipeline (a silent "/apiv1" instead of "/api/v1" routing error) — restoring delivery with zero regression across 7+ major app releases. Led cross-platform push-notification QA across Android 11–16 and iOS 17+, covering 5+ MoEngage template types, SDK upgrades, notification-permission flows, and the AWS SNS-to-MoEngage migration with primary/fallback routing verification. Also validated Universal Links and App Links for partner integrations (Yes Rewards/Loyyal UAE), confirming token extraction and checkout routing.</p>
+        <div class="proj-links">
+          <span>10+ Deep Link Patterns</span>
+          <span>7+ Releases, Zero Regression</span>
+        </div>
+      </div>
+
       <div class="proj-card reveal">
         <div class="proj-status">Resolved</div>
         <h3>Bad Geolocation Flagging &amp; SLA Buffer Control</h3>
@@ -372,6 +392,7 @@
           <span class="tag">Slack</span>
           <span class="tag">Git / Bitbucket</span>
           <span class="tag">Mailtrap</span>
+          <span class="tag">MoEngage</span>
         </div>
       </div>
       <div class="skill-group reveal">
@@ -391,7 +412,8 @@
         <div class="tags">
           <span class="tag">Magento</span>
           <span class="tag">Sailfish</span>
-          <span class="tag">PHP / Laravel</span>
+          <span class="tag">Cordova</span>
+          <span class="tag">React Native</span>
           <span class="tag">MySQL</span>
         </div>
       </div>
@@ -443,7 +465,7 @@
         </div>
         <div class="job-date">2005 — 2009</div>
       </div>
-      <div class="job-loc">Vizag</div>
+      <div class="job-loc">India</div>
     </div>
   </div>
 </section>
